@@ -3,8 +3,8 @@
 %endif
 
 Name:           python-isodate
-Version:        0.4.6
-Release:        2%{?dist}
+Version:        0.4.7
+Release:        1%{?dist}
 Summary:        An ISO 8601 date/time/duration parser and formater
 Group:          Development/Languages
 License:        BSD
@@ -74,6 +74,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jan 26 2012 James Laska <jlaska@redhat.com> - 0.4.7-1
+- Update to 0.4.7
+
 * Mon Jan 23 2012 James Laska <jlaska@redhat.com> - 0.4.6-1
 - Update to 0.4.6
 
