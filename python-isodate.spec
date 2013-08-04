@@ -4,7 +4,7 @@
 
 Name:           python-isodate
 Version:        0.4.7
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        An ISO 8601 date/time/duration parser and formater
 Group:          Development/Languages
 License:        BSD
@@ -74,6 +74,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.7-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
