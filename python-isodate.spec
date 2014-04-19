@@ -8,18 +8,14 @@
 Name:           python-%{modulename}
 Version:        0.5.0
 Release:        1%{?dist}
-Summary:        An ISO 8601 date/time/duration parser and formater
+Summary:        An ISO 8601 date/time/duration parser and formatter
 Group:          Development/Languages
 License:        BSD
 URL:            http://pypi.python.org/pypi/%{modulename}
 Source0:        http://pypi.python.org/packages/source/i/%{modulename}/%{modulename}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python2-devel
-%if 0%{?fedora} >= 11 || 0%{?rhel} >= 6
-BuildRequires:  python-setuptools-devel
-%else
 BuildRequires:  python-setuptools
-%endif
 
 %if 0%{?with_python3}
 BuildRequires:  python3-devel
@@ -47,7 +43,7 @@ nanoseconds it will round it to microseconds.
 
 %if 0%{?with_python3}
 %package -n python3-%{modulename}
-Summary:        An ISO 8601 date/time/duration parser and formater
+Summary:        An ISO 8601 date/time/duration parser and formatter
 Group:          Development/Languages
 
 %description -n python3-%{modulename}
@@ -137,6 +133,7 @@ popd
 - Update to 0.5.0
 - Add a Python3 build
 - Run unit tests
+- Remove python-setuptools-devel BR per https://fedoraproject.org/wiki/Changes/Remove_Python-setuptools-devel
 
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.7-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
