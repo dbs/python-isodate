@@ -109,6 +109,15 @@ popd
 %clean
 rm -rf %{buildroot}
 
+%check
+%{__python} setup.py test
+
+%if 0%{?with_python3}
+pushd %{py3dir}
+%{__python} setup.py test
+popd
+%endif
+
 
 %files
 %defattr(-,root,root,-)
@@ -127,6 +136,7 @@ rm -rf %{buildroot}
 * Fri Apr 18 2014 Dan Scott <dan@coffeecode.net> - 0.5.0-1
 - Update to 0.5.0
 - Add a Python3 build
+- Run unit tests
 
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.7-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
