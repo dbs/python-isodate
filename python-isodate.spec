@@ -1,5 +1,5 @@
 %if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python2_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 %endif
 
 %global modulename isodate
@@ -76,9 +76,9 @@ cp -a . %{py3dir}
 
 %build
 %if 0%{?fedora} >= 11 || 0%{?rhel} >= 6
-%{__python} setup.py build
+%{__python2} setup.py build
 %else
-CFLAGS="%{optflags}" %{__python} -c 'import setuptools; execfile("setup.py")' build
+CFLAGS="%{optflags}" %{__python2} -c 'import setuptools; execfile("setup.py")' build
 %endif
 
 %if 0%{?with_python3}
@@ -97,20 +97,20 @@ popd
 %endif
 
 %if 0%{?fedora} >= 11 || 0%{?rhel} >= 6
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 %else
-%{__python} -c 'import setuptools; execfile("setup.py")' install --skip-build --root %{buildroot}
+%{__python2} -c 'import setuptools; execfile("setup.py")' install --skip-build --root %{buildroot}
 %endif
 
 %clean
 rm -rf %{buildroot}
 
 %check
-%{__python} setup.py test
+%{__python2} setup.py test
 
 %if 0%{?with_python3}
 pushd %{py3dir}
-%{__python} setup.py test
+%{__python3} setup.py test
 popd
 %endif
 
@@ -118,8 +118,8 @@ popd
 %files
 %defattr(-,root,root,-)
 %doc CHANGES.txt README.rst TODO.txt
-%{python_sitelib}/%{modulename}*.egg-info
-%{python_sitelib}/%{modulename}
+%{python2_sitelib}/%{modulename}*.egg-info
+%{python2_sitelib}/%{modulename}
 
 %if 0%{?with_python3}
 %files -n python3-%{modulename}
